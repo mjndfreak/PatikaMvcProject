@@ -267,5 +267,10 @@ public class BookController : Controller
 
         return View(bookDetailViewModel);
     }
+
+    public IActionResult Add()
+    {
+        return View();
+    }
 }
 

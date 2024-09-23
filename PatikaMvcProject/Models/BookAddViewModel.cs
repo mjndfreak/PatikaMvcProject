@@ -1,13 +1,10 @@
-using System.ComponentModel.DataAnnotations;
 
-namespace PatikaMvcProject.Entities;
+using PatikaMvcProject.Entities;
 
-public class BookEntity
+namespace PatikaMvcProject.Models;
+
+public class BookAddViewModel
 {
-    public BookEntity()
-    {
-        IsRead = false;
-    }
     public int Id { get; set; }
     public string Title { get; set; }
     public int AuthorId { get; set; }
@@ -21,4 +18,3 @@ public class BookEntity
     // navigation property to the Author model
     public AuthorEntity AuthorEntity { get; set; }
 }
-

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PatikaMvcProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9d47e69bab1a3175cbde7a9048792286f37a0ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("PatikaMvcProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PatikaMvcProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
