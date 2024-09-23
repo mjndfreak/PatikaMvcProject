@@ -1,0 +1,32 @@
+@model List<BookListViewModel>
+
+
+
+<a asp-controller="Book" type="button" class="btn btn-lg btn-success">Add a Book</a>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+@foreach (var book in Model)
+{
+
+<div class="col">
+    <div class="card" >
+        <img src="https://media.istockphoto.com/id/173015527/tr/foto%C4%9Fraf/a-single-red-book-on-a-white-surface.jpg?s=2048x2048&w=is&k=20&c=NGBLpTsY6xA118FWSw0uiZKhXUCyfnrT3tQtx2svHow=" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@book.Title</h5>
+            <p class="card-text">Author Name: @book.AuthorName</p>
+            <p class="card-text">Genre: @book.Genre</p>
+            <p class="card-text">Publish Date: @book.PublishDate</p>
+            <p class="card-text">ISBN:@book.ISBN</p>
+            <p class="card-text">Available Copies: @book.CopiesAvailable</p>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id" type="button" class="btn btn-success">Details</a>
+            <a type="button" class="btn btn-warning">Update</a>
+            <a asp-controller="Book" asp-action="Read" asp-route-id="@book.Id" type="button" class="btn btn-dark">@(book.IsRead == false ? "Not Read" : "Read")</a>
+        </div>
+    </div>
+</div>
+};
+</div>
+    

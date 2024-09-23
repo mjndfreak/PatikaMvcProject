@@ -1,0 +1,15 @@
+@model BookDetailViewModel
+
+
+<div class="card" >
+<img src="https://media.istockphoto.com/id/173015527/tr/foto%C4%9Fraf/a-single-red-book-on-a-white-surface.jpg?s=2048x2048&w=is&k=20&c=NGBLpTsY6xA118FWSw0uiZKhXUCyfnrT3tQtx2svHow=" class="card-img-top" alt="...">
+<div class="card-body">
+    <h5 class="card-title">@Model.Title</h5>
+    <p class="card-text">Book Id: @Model.Id</p>
+    <p class="card-text">Author Name: @Model.AuthorName</p>
+    <p class="card-text">Genre: @Model.Genre</p>
+    <p class="card-text">Publish Date: @Model.PublishDate</p>
+    <p class="card-text">ISBN:@Model.ISBN</p>
+    <p class="card-text">Available Copies: @Model.CopiesAvailable</p>
+</div>
+</div>

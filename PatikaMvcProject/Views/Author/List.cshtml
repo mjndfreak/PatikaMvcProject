@@ -1,0 +1,26 @@
+@model List<AuthorListViewModel>
+
+<a asp-controller="Author" asp-action="Add" type="button" class="btn btn-lg btn-success">Add an Author</a>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+@foreach (var author in Model)
+{
+    <div class="col">
+        <div class="card" >
+            <img src="https://media.istockphoto.com/id/173015527/tr/foto%C4%9Fraf/a-single-red-book-on-a-white-surface.jpg?s=2048x2048&w=is&k=20&c=NGBLpTsY6xA118FWSw0uiZKhXUCyfnrT3tQtx2svHow=" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@author.AuthorName</h5>
+                <p class="card-text">Date of Birth: @author.DateOfBirth</p>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <a asp-controller="Author" asp-action="Detail" asp-route-id="@author.Id" type="button" class="btn btn-success">Details</a>
+                    <button type="button" class="btn btn-warning">Update</button>
+                    <a asp-controller="Author" asp-action="Delete" asp-route-id="@author.Id" type="button" class="btn btn-dark">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>
