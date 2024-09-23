@@ -1,19 +1,28 @@
+@model AuthorAddViewModel
+    <!-- Wrapping the form inside a card for better styling -->
 <div class="card" >
     <div class="card-body">
+        <!-- Begin form here. Data is submitted to the 'Author' Controller -->
         <form method="post" asp-controller="Author">
+            <!-- Field for author's first name -->
             <div class="mb-3">
-                <label></label>
-                <input class="form-control" type="text"/>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label>First Name</label>
+                <input asp-for="FirstName" class="form-control" type="text"/>
+                <span asp-validation-for="FirstName" class="text-danger mt-2 fw-bold"></span>
             </div>
+            <!-- Field for author's last name -->
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label>Last Name</label>
+                <input asp-for="LastName" class="form-control" type="text"/>
+                <span asp-validation-for="LastName" class="text-danger mt-2 fw-bold"></span>
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <!-- Field for author's date of birth -->
+            <div class="mb-3">
+                <label>Date of Birth</label>
+                <input asp-for="DateOfBirth" class="form-control" type="text"/>
+                <span asp-validation-for="DateOfBirth" class="text-danger mt-2 fw-bold"></span>
             </div>
+            <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

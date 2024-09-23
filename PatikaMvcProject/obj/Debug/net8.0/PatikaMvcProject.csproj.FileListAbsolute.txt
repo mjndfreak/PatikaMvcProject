@@ -62,3 +62,4 @@
 /Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/obj/Debug/net8.0/PatikaMvcProject.pdb
 /Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/obj/Debug/net8.0/PatikaMvcProject.genruntimeconfig.cache
 /Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/obj/Debug/net8.0/ref/PatikaMvcProject.dll
+/Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/obj/Debug/net8.0/PatikaMvcProject.sourcelink.json

@@ -10,5 +10,13 @@ public class AuthorEntity
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateOnly DateOfBirth { get; set; }
-    public bool IsDeleted { get; set; } 
+    public bool IsDeleted { get; set; }
+
+    public string FullName
+    {
+        get
+        {
+            return FirstName + " " + LastName;
+        }
+    }
 }

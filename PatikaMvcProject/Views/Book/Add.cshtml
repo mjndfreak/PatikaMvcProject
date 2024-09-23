@@ -1,0 +1,38 @@
+
+
+@model BookAddViewModel
+
+<div class="card" >
+    <div class="card-body">
+        <form method="post" asp-controller="Book">
+            <div class="mb-3">
+                <label>Title</label>
+                <input asp-for="Title" class="form-control" type="text"/>
+                <span asp-validation-for="Title" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label>Genre</label>
+                <input asp-for="Genre" class="form-control" type="text"/>
+                <span asp-validation-for="Genre" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label>Publish Date</label>
+                <input asp-for="PublishDate" class="form-control" type="text"/>
+                <span asp-validation-for="PublishDate" class="text-danger mt-2 fw-bold"></span>
+            </div><div class="mb-3">
+                <label>ISBN</label>
+                <input asp-for="ISBN" class="form-control" type="text"/>
+                <span asp-validation-for="ISBN" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label>Copies</label>
+                <input asp-for="CopiesAvailable" class="form-control" type="text"/>
+                <span asp-validation-for="CopiesAvailable" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <select asp-for="AuthorId" asp-items="@(new SelectList(ViewBag.Authors,"Id" ,"FullName"))" class="form-control">
+                <option selected disabled>Authors...</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

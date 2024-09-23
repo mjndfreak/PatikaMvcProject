@@ -26,6 +26,8 @@ public class AuthorController : Controller
         new AuthorEntity { Id = 15, FirstName = "Kurt", LastName = "Vonnegut", DateOfBirth = new DateOnly(1922, 11, 11) },
     };
     
+    
+    // The "List" Action method returns a view displaying a list of the Author's detail excluding the deleted ones
     // GET
     public IActionResult List()
     {
@@ -38,14 +40,14 @@ public class AuthorController : Controller
         }).ToList();
         return View(viewModel);
     }
-    
+    // This method enables toggling of an author's deleted status
     public IActionResult Delete(int id)
     {
         var author = _authors.Find(x => x.Id == id);
         author.IsDeleted = !author.IsDeleted;
         return RedirectToAction("List","Author");
     }
-
+    // This method returns detailed information about a specific author
     public IActionResult Detail(int id)
     {
         var viewModel = _authors.Find(x => x.Id == id);
@@ -59,11 +61,33 @@ public class AuthorController : Controller
         };
         return View(authorDetailViewModel);
     }
-
+    // This action will show a form for adding new authors
     [HttpGet]
     public IActionResult Add()
     {
         return View();
+    }
+    // This is a post action for adding new authors
+    [HttpPost]
+    public IActionResult Add(AuthorAddViewModel formData)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(formData);
+        }
+
+        int maxId = _authors.Max(x => x.Id);
+        var newAuthor = new AuthorEntity()
+        {
+            Id = maxId + 1,
+            DateOfBirth = formData.DateOfBirth,
+            FirstName = formData.FirstName,
+            LastName = formData.LastName,
+            IsDeleted = false
+        };
+        _authors.Add(newAuthor);
+        
+        return RedirectToAction("List", "Author");
     }
 }
 

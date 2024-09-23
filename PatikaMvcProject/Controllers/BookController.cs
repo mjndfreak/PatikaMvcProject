@@ -1,5 +1,6 @@
 using Feliz;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PatikaMvcProject.Entities;
 using PatikaMvcProject.Models;
 
@@ -10,17 +11,26 @@ public class BookController : Controller
 
     public static List<AuthorEntity> _authors = new List<AuthorEntity>
     {
-        new AuthorEntity { Id = 1, FirstName = "George", LastName = "Orwell", DateOfBirth = new DateOnly(1903, 6, 25) },
-        new AuthorEntity { Id = 2, FirstName = "Aldous", LastName = "Huxley", DateOfBirth = new DateOnly(1894, 7, 26) },
-        new AuthorEntity { Id = 3, FirstName = "Ray", LastName = "Bradbury", DateOfBirth = new DateOnly(1920, 8, 22) },
-        new AuthorEntity { Id = 4, FirstName = "Isaac", LastName = "Asimov", DateOfBirth = new DateOnly(1920, 1, 2) },
-        new AuthorEntity { Id = 5, FirstName = "Jules", LastName = "Verne", DateOfBirth = new DateOnly(1828, 2, 8) },
-        new AuthorEntity { Id = 6, FirstName = "Philip", LastName = "Dick", DateOfBirth = new DateOnly(1928, 12, 16) },
+        new AuthorEntity 
+            { Id = 1, FirstName = "George", LastName = "Orwell", DateOfBirth = new DateOnly(1903, 6, 25) },
+        new AuthorEntity 
+            { Id = 2, FirstName = "Aldous", LastName = "Huxley", DateOfBirth = new DateOnly(1894, 7, 26) },
+        new AuthorEntity 
+            { Id = 3, FirstName = "Ray", LastName = "Bradbury", DateOfBirth = new DateOnly(1920, 8, 22) },
+        new AuthorEntity 
+            { Id = 4, FirstName = "Isaac", LastName = "Asimov", DateOfBirth = new DateOnly(1920, 1, 2) },
+        new AuthorEntity 
+            { Id = 5, FirstName = "Jules", LastName = "Verne", DateOfBirth = new DateOnly(1828, 2, 8) },
+        new AuthorEntity 
+            { Id = 6, FirstName = "Philip", LastName = "Dick", DateOfBirth = new DateOnly(1928, 12, 16) },
         new AuthorEntity
             { Id = 7, FirstName = "Arthur", LastName = "Clarke", DateOfBirth = new DateOnly(1917, 12, 16) },
-        new AuthorEntity { Id = 8, FirstName = "Frank", LastName = "Herbert", DateOfBirth = new DateOnly(1920, 10, 8) },
-        new AuthorEntity { Id = 9, FirstName = "H.G.", LastName = "Wells", DateOfBirth = new DateOnly(1866, 9, 21) },
-        new AuthorEntity { Id = 10, FirstName = "Mary", LastName = "Shelley", DateOfBirth = new DateOnly(1797, 8, 30) },
+        new AuthorEntity 
+            { Id = 8, FirstName = "Frank", LastName = "Herbert", DateOfBirth = new DateOnly(1920, 10, 8) },
+        new AuthorEntity 
+            { Id = 9, FirstName = "H.G.", LastName = "Wells", DateOfBirth = new DateOnly(1866, 9, 21) },
+        new AuthorEntity 
+            { Id = 10, FirstName = "Mary", LastName = "Shelley", DateOfBirth = new DateOnly(1797, 8, 30) },
         new AuthorEntity
             { Id = 11, FirstName = "William", LastName = "Gibson", DateOfBirth = new DateOnly(1948, 3, 17) },
         new AuthorEntity
@@ -266,6 +276,39 @@ public class BookController : Controller
         };
 
         return View(bookDetailViewModel);
+    }
+    
+    
+    [HttpGet]
+    public IActionResult Add()
+    {
+        ViewBag.Authors = _authors;
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Add(BookAddViewModel formData)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Authors = _authors;
+            return View(formData);
+        }
+        int maxId = _books.Max(x => x.Id);
+        var newBook = new BookEntity()
+        {
+            Id = maxId + 1,
+            Title = formData.Title,
+            Genre = formData.Genre,
+            PublishDate = formData.PublishDate,
+            ISBN = formData.ISBN,
+            CopiesAvailable = formData.CopiesAvailable,
+            AuthorId = formData.AuthorId
+        };
+        
+        _books.Add(newBook);
+
+        return RedirectToAction("List", "Book");
     }
 }
 
