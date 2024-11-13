@@ -4,7 +4,7 @@
 
 <div class="card" >
     <div class="card-body">
-        <form method="post" asp-controller="Book">
+        <form method="post" asp-controller="Book" asp-action="Add">
             <div class="mb-3">
                 <label>Title</label>
                 <input asp-for="Title" class="form-control" type="text"/>
@@ -31,7 +31,9 @@
             </div>
             <select asp-for="AuthorId" asp-items="@(new SelectList(ViewBag.Authors,"Id" ,"FullName"))" class="form-control">
                 <option selected disabled>Authors...</option>
+                <span asp-validation-for="Id"></span>
             </select>
+            
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

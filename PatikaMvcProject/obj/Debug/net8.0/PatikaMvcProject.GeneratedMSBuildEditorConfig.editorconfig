@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/Views/Auth/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9TaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/Views/Auth/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9TaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/cagdasergenc/RiderProjects/PatikaMvcProject/PatikaMvcProject/Views/Author/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yL0FkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

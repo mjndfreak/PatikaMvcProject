@@ -80,13 +80,46 @@ public class AuthorController : Controller
         var newAuthor = new AuthorEntity()
         {
             Id = maxId + 1,
-            DateOfBirth = formData.DateOfBirth,
+            DateOfBirth = (DateOnly)formData.DateOfBirth,
             FirstName = formData.FirstName,
             LastName = formData.LastName,
             IsDeleted = false
         };
         _authors.Add(newAuthor);
         
+        
+        return RedirectToAction("List", "Author");
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var author = _authors.Find(x => x.Id == id);
+        var viewModel = new AuthorEditViewModel()
+        {
+            DateOfBirth = author.DateOfBirth,
+            FirstName = author.FirstName,
+            Id = author.Id,
+            LastName = author.LastName
+        };
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(AuthorEditViewModel formData)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(formData);
+        }
+
+        var author = _authors.Find(x => x.Id == formData.Id);
+        author.FirstName = formData.FirstName;
+        author.LastName = formData.LastName;
+        author.DateOfBirth = formData.DateOfBirth;
+        author.IsDeleted = false;
+
         return RedirectToAction("List", "Author");
     }
 }

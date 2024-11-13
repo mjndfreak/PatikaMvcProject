@@ -1,0 +1,32 @@
+@model AuthorEditViewModel
+
+<div class="card" >
+    <div class="card-body">
+        <!-- Begin form here. Data is submitted to the 'Author' Controller -->
+        <form method="post" asp-controller="Author">
+            <input type="hidden" asp-for="Id"/>
+            <span asp-validation-for="Id"></span>
+            
+            <!-- Field for author's first name -->
+            <div class="mb-3">
+                <label>First Name</label>
+                <input asp-for="FirstName" class="form-control" type="text"/>
+                <span asp-validation-for="FirstName" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <!-- Field for author's last name -->
+            <div class="mb-3">
+                <label>Last Name</label>
+                <input asp-for="LastName" class="form-control" type="text"/>
+                <span asp-validation-for="LastName" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <!-- Field for author's date of birth -->
+            <div class="mb-3">
+                <label>Date of Birth</label>
+                <input asp-for="DateOfBirth" class="form-control" type="text"/>
+                <span asp-validation-for="DateOfBirth" class="text-danger mt-2 fw-bold"></span>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

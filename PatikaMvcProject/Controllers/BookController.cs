@@ -46,7 +46,7 @@ public class BookController : Controller
 
 
 
-    public static List<BookEntity> _books = new List<BookEntity>
+    public static List<BookEntity?> _books = new List<BookEntity?>
     {
         // George Orwell (Author 1)
         new BookEntity
@@ -300,13 +300,54 @@ public class BookController : Controller
             Id = maxId + 1,
             Title = formData.Title,
             Genre = formData.Genre,
-            PublishDate = formData.PublishDate,
+            PublishDate = (DateOnly)formData.PublishDate,
             ISBN = formData.ISBN,
             CopiesAvailable = formData.CopiesAvailable,
             AuthorId = formData.AuthorId
         };
         
         _books.Add(newBook);
+        ViewBag.Authors = _authors;
+        return RedirectToAction("List", "Book");
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var book = _books.Find(x => x.Id == id);
+        var viewModel = new BookEditViewModel()
+        {
+            Id = book.Id,
+            Title =book.Title,
+            PublishDate = book.PublishDate,
+            AuthorId = book.AuthorId,
+            ISBN = book.ISBN,
+            Genre = book.Genre,
+            CopiesAvailable = book.CopiesAvailable
+        };
+
+        ViewBag.Authors = _authors;
+        
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(BookEditViewModel formData)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Authors = _authors;
+            return View(formData);
+        }
+
+        var book = _books.Find(x => x.Id == formData.Id);
+        book.Id = formData.Id;
+        book.Title = formData.Title;
+        book.PublishDate = formData.PublishDate;
+        book.AuthorId = formData.AuthorId;
+        book.ISBN = formData.ISBN;
+        book.Genre = formData.Genre;
+        book.CopiesAvailable = formData.CopiesAvailable;
 
         return RedirectToAction("List", "Book");
     }

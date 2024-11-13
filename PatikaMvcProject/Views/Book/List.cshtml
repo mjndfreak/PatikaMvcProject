@@ -22,7 +22,7 @@
         </div>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id" type="button" class="btn btn-success">Details</a>
-            <a type="button" class="btn btn-warning">Update</a>
+            <a asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id" type="button" class="btn btn-warning">Edit</a>
             <a asp-controller="Book" asp-action="Read" asp-route-id="@book.Id" type="button" class="btn btn-dark">@(book.IsRead == false ? "Not Read" : "Read")</a>
         </div>
     </div>

@@ -1,7 +1,10 @@
-﻿<div class="card align-content-center" style="max-block-size: auto;">
+﻿
+
+<div class="align-self-auto" style="max-width: 800px;height: 400px">
+<div class="card align-content-center">
     <div class="btn-group">
-        <a asp-controller="User" asp-action="Login" class="btn btn-success">Login</a>
-        <a asp-controller="User" asp-action="SignUp" class="btn btn-primary">SignUp</a>
+        <a asp-controller="Auth" asp-action="SignIn" class="btn btn-success">Login</a>
+        <a asp-controller="Auth" asp-action="SignUp" class="btn btn-primary">SignUp</a>
     </div>
     <div class="card-body">
         <h5 class="card-title">Login/SignUp</h5>
@@ -13,7 +16,7 @@
     <div class="card-body">
         <h5 class="card-title">Books</h5>
         <p class="card-text">Go to Books page to list, add, edit, or delete the books.</p>
-        <a asp-controller="Book" asp-action="List" class="btn btn-primary">BOOKS</a>
+        <a asp-controller="Book" asp-action="List" class="btn btn-secondary">BOOKS</a>
     </div>
 </div> 
 <div class="card align-content-center" style="max-block-size: auto;">
@@ -21,7 +24,7 @@
     <div class="card-body">
         <h5 class="card-title">Authors</h5>
         <p class="card-text">Go to Authors page to list, add, edit, or delete the authors.</p>
-        <a asp-controller="Author" asp-action="List" class="btn btn-primay">AUTHORS</a>
+        <a asp-controller="Author" asp-action="List" class="btn btn-secondary">AUTHORS</a>
     </div>
 </div>
-
+</div>
